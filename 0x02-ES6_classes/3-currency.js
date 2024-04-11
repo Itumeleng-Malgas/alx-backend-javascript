@@ -1,41 +1,32 @@
-export default class Pricing {
-  constructor(amount, currency) {
-    this._amount = null;
-    this._currency = null;
-    this.amount = amount;
-    this.currency = currency;
+export default class Currency {
+  constructor(code, name) {
+    this.code = code;
+    this.name = name;
   }
 
-  displayFullPrice() {
-    return `${this._amount} ${this._currency.name} (${this._currency.code})`;
+  displayFullCurrency() {
+    return `${this._name} (${this._code})`;
   }
 
-  static convertPrice(amount, conversionRate) {
-    if (typeof amount !== 'number' || typeof conversionRate !== 'number') {
-      throw new TypeError('Amount and conversionRate must be numbers');
+  get code() {
+    return this._code;
+  }
+
+  set code(code) {
+    if ((typeof code !== 'string') && !(code instanceof String)) {
+      throw new TypeError('Code must be a string');
     }
-    return amount * conversionRate;
+    this._code = code;
   }
 
-  get amount() {
-    return this._amount;
+  get name() {
+    return this._name;
   }
 
-  set amount(amount) {
-    if (typeof amount !== 'number') {
-      throw new TypeError('Amount must be a number');
+  set name(name) {
+    if ((typeof name !== 'string') && !(name instanceof String)) {
+      throw new TypeError('Name must be a string');
     }
-    this._amount = amount;
-  }
-
-  get currency() {
-    return this._currency;
-  }
-
-  set currency(currency) {
-    if (!(currency instanceof Currency)) {
-      throw new TypeError('Currency must be an instance of Currency');
-    }
-    this._currency = currency;
+    this._name = name;
   }
 }
