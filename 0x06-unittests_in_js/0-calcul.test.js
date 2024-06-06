@@ -9,8 +9,8 @@ describe("calculateNumber()", function() {
       assert.strictEqual(result, 2);
     });
     it('checking rounding off', function() {
-      const result = calculateNumber(1.1, 2.2);
-      assert.strictEqual(result, 3);
+      const result = calculateNumber(1.1, 2.5);
+      assert.strictEqual(result, 4);
     });
     it('checking negative input', function() {
       const res = calculateNumber(-1.1, -2.0);
