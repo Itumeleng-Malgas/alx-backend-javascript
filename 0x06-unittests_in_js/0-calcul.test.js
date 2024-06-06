@@ -13,8 +13,11 @@ describe("calculateNumber()", function() {
       assert.strictEqual(result, 4);
     });
     it('checking negative input', function() {
-      const res = calculateNumber(-1.1, -2.0);
-      assert.strictEqual(res, -3);
+      const result = calculateNumber(-1.1, -2.0);
+      assert.strictEqual(result, -3);
     });
-
+    it('checking zeros as inputs', function() {
+      const result = calculateNumber(0, 0);
+      assert.strictEqual(result, 0);
+    });
 });
