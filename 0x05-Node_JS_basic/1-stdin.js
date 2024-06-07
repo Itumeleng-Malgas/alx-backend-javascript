@@ -1,22 +1,15 @@
-const readline = require('readline');
+process.stdout.write('Welcome to Holberton School, what is your name?\n');
 
-// Create an interface for reading input and output
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
+// Function to handle user input
+const handleInput = (data) => {
+  process.stdout.write(`Your name is: ${data.toString()}`);
+  process.exit();
+};
+
+// Attach the 'data' event listener for user input
+process.stdin.on('data', handleInput);
+
+// Attach the 'exit' event listener to display the closing message
+process.on('exit', () => {
+  process.stdout.write('This important software is now closing\n');
 });
-
-console.log('Welcome to Holberton School, what is your name?');
-
-rl.question('', (name) => {
-  console.log(`Your name is: ${name}`);
-  
-  rl.close();
-});
-
-// Listen for the 'close' event to display the closing message
-rl.on('close', () => {
-  console.log('This important software is now closing');
-  process.exit(0);
-});
-
