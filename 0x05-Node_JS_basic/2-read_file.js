@@ -8,7 +8,7 @@ function countStudents(filePath) {
     const data = fs.readFileSync(absolutePath, 'utf8');
     const lines = data.trim().split('\n');
 
-    const records = lines.slice(1).filter(line => line.trim() !== '');
+    const records = lines.slice(1).filter((line) => line.trim() !== '');
 
     if (records.length === 0) {
       console.log('Number of students: 0');
@@ -17,6 +17,7 @@ function countStudents(filePath) {
 
     const fieldMap = {};
     records.forEach((record) => {
+      // eslint-disable-next-line no-unused-vars
       const [firstname, lastname, age, field] = record.split(',');
 
       if (!fieldMap[field]) {
