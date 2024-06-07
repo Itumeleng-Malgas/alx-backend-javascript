@@ -18,15 +18,13 @@ function countStudents(filePath) {
       const records = lines.slice(1).filter((line) => line.trim() !== '');
 
       if (records.length === 0) {
-        console.log('Number of students: 0');
-        resolve();
+        resolve('Number of students: 0');
         return;
       }
 
       const fieldMap = {};
 
       records.forEach((record) => {
-        // eslint-disable-next-line no-unused-vars
         const [firstname, lastname, age, field] = record.split(',');
 
         if (!fieldMap[field]) {
@@ -35,13 +33,13 @@ function countStudents(filePath) {
         fieldMap[field].push(firstname);
       });
 
-      console.log(`Number of students: ${records.length}`);
+      let output = `Number of students: ${records.length}\n`;
 
       for (const [field, students] of Object.entries(fieldMap)) {
-        console.log(`Number of students in ${field}: ${students.length}. List: ${students.join(', ')}`);
+        output += `Number of students in ${field}: ${students.length}. List: ${students.join(', ')}\n`;
       }
 
-      resolve();
+      resolve(output);
     });
   });
 }
