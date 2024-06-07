@@ -22,7 +22,8 @@ function countStudents(filePath) {
       const fieldMap = {};
 
       records.forEach((record) => {
-        const [firstname, , , field] = record.split(',');
+        // eslint-disable-next-line no-unused-vars
+        const [firstname, lastname, age, field] = record.split(',');
 
         if (!fieldMap[field]) {
           fieldMap[field] = [];
@@ -35,9 +36,9 @@ function countStudents(filePath) {
       for (const [field, students] of Object.entries(fieldMap)) {
         output += `Number of students in ${field}: ${students.length}. List: ${students.join(', ')}\n`;
       }
-      
-      console.log(output)
-      resolve(output);
+
+      console.log(output);
+      resolve();
     });
   });
 }
