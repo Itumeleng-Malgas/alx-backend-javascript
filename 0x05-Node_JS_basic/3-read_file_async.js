@@ -34,13 +34,13 @@ function countStudents(filePath) {
         fieldMap[field].push(firstname);
       });
 
-      console.log(`Number of students: ${records.length}`);
-
+      let output = `Number of students: ${records.length}\n`;
       for (const [field, students] of Object.entries(fieldMap)) {
-        console.log(`Number of students in ${field}: ${students.length}. List: ${students.join(', ')}`);
+        output += `Number of students in ${field}: ${students.length}. List: ${students.join(', ')}\n`;
       }
-
-      resolve();
+      
+      console.log(output);
+      resolve(output);
     });
   });
 }
